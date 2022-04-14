@@ -1,0 +1,39 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://swap-dev-rds.cluster-ro-cmkglm34pphj.ap-northeast-2.rds.amazonaws.com:3306
+    username: jeff_user
+    password: wpvdjemals1234%
+  profiles:
+    active: local
+  redis:    
+    port: 6379
+    host: swap-dev-redis.r6nhah.0001.apn2.cache.amazonaws.com
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2       
+  
+  
+identityServer:
+       host: https://dev.auth.jeffswap.com
+       loginurl: /api/Authentication/Login
+       logouturl: /api/Authentication/Logout
+       apiresourceid: 23a08c5c89f14775ac8ec432d989b052
+       clientid: c04e447579ca464db3998d7c505900d5
+       secretkey: AB31290AD4BBF0046ADB6B99648457759BFAD7636E3E8B25B7151BBDA18CAD1C
+       scope: openid profile email offline_access jeff.user_access jeff.super_access
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  
+restTemplate:
+  factory:
+    readTimeout: 5000 
+    connectTimeout: 3000
+  httpClient:
+    maxConnTotal: 100
+    maxConnPerRoute: 5 
+  

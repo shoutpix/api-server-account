@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.swap.apis.mapper.account.AccountMapper">
+
+	<select id="selectAccountInfo" resultType="com.swap.apis.model.account.AccountInfo">
+		SELECT *
+		FROM swap_account_db.account_info
+		Limit 1
+	</select>
+
+</mapper>

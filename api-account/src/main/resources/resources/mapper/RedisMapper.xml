@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.swap.apis.mapper.operation.RedisMapper">
+
+	<select id="selectRedisInfoList" resultType="com.swap.apis.model.operation.RedisInfo">
+		SELECT Seq as seq
+		     , TypeName as typeName
+		     , DbIndex as dbIndex
+		     , Password as password
+		     , Enable as enable
+		FROM swap_operation_db.redis_info
+	   WHERE Enable = '1'  
+	</select>
+	
+	<select id="selectRedisEndpointsList" resultType="com.swap.apis.model.operation.RedisEndpoint">
+		SELECT Seq as seq
+		     , RedisInfoSeq as redisInfoSeq
+		     , Host as host
+		     , Port as port
+		FROM swap_operation_db.redis_endpoints
+	   WHERE RedisInfoSeq 
+	      IN ( SELECT Seq FROM swap_operation_db.redis_info WHERE Enable ='1')  
+	</select>
+
+</mapper>
